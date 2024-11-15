@@ -21,6 +21,13 @@ public class Chassis extends SubsystemBase {
      System.out.println("just created chassis");
   }
 
+  public void drive(double speed) {
+    leftFront.set(speed);
+    leftRear.set(speed);
+    rightFront.set(speed);
+    rightRear.set(speed);
+  }
+
 
   @Override
   public void periodic() {
