@@ -12,11 +12,14 @@ import frc.robot.subsystems.Chassis;
 public class DriveChassis extends Command {
   /** Creates a new DriveChassis. */
   private DoubleSupplier driveFunction;
+  private DoubleSupplier spinFunction;
   private Chassis chassis;
-  public DriveChassis(DoubleSupplier func, Chassis chassis) {
+
+  public DriveChassis(DoubleSupplier func, DoubleSupplier spinFunc,Chassis chassis) {
     // Use addRequirements() here to declare subsystem dependencies.
     this.driveFunction = func;
     this.chassis = chassis;
+    this.spinFunction = spinFunc;
     addRequirements(chassis);
   }
 
@@ -29,6 +32,10 @@ public class DriveChassis extends Command {
   public void execute() {
     double speed = driveFunction.getAsDouble();
     chassis.drive(speed);
+    double spin = spinFunction.getAsDouble();
+   if (Math.abs(spin) >= 0.1){
+    chassis.spin(spin);
+   } 
   }
 
   // Called once the command ends or is interrupted.

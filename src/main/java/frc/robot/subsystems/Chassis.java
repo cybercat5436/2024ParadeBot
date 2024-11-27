@@ -22,11 +22,19 @@ public class Chassis extends SubsystemBase {
   }
 
   public void drive(double speed) {
+    speed *= 0.3;
     leftFront.set(speed);
     leftRear.set(speed);
     rightFront.set(speed);
     rightRear.set(speed);
   }
+   public void spin(double spin) {
+    spin *= 0.3;
+    leftFront.set(spin);
+    leftRear.set(spin);
+    rightFront.set(-spin);
+    rightRear.set(-spin);
+   }
 
 
   @Override
