@@ -22,11 +22,11 @@ public class Chassis extends SubsystemBase {
   }
 
   public void drive(double speed, double spin) {
-    speed *= 0.3;
-    spin*= 0.3;
+    speed *= 0.2;
+    spin*= 0.2;
     double leftSide;
     double rightSide;
-    if (spin < 0){
+    if (speed < 0){
       leftSide = speed - spin;
       rightSide = speed + spin;
     }

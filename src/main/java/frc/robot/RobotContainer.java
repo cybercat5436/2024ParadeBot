@@ -10,7 +10,9 @@ import frc.robot.commands.DriveChassis;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.subsystems.Chassis;
 import frc.robot.subsystems.ExampleSubsystem;
+import frc.robot.subsystems.Reindeer;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 
@@ -25,6 +27,7 @@ public class RobotContainer {
   private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
 
   private final Chassis chassis = new Chassis();
+  private final Reindeer reindeer = new Reindeer();
  
   // Replace with CommandPS4Controller or CommandJoystick if needed
   private final CommandXboxController m_driverController =
@@ -53,7 +56,9 @@ public class RobotContainer {
     // Schedule `exampleMethodCommand` when the Xbox controller's B button is pressed,
     // cancelling on release.
     m_driverController.b().whileTrue(m_exampleSubsystem.exampleMethodCommand());
-    chassis.setDefaultCommand(new DriveChassis(() -> -m_driverController.getLeftY(), () -> m_driverController.getRightX(), chassis));
+    chassis.setDefaultCommand(new DriveChassis(() -> m_driverController.getLeftY(), () -> -m_driverController.getRightX(), chassis));
+    m_driverController.a().onTrue(new InstantCommand(() -> reindeer.start()));
+    m_driverController.b().onTrue(new InstantCommand(() -> reindeer.stop()));
   }
 
   /**

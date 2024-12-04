@@ -32,9 +32,9 @@ public class DriveChassis extends Command {
   public void execute() {
     double speed = driveFunction.getAsDouble();
     double spin = spinFunction.getAsDouble();
-   if (Math.abs(spin) >= 0.1 || Math.abs(speed) >= 0.1){
+   
     chassis.drive(speed,spin);
-   } 
+   
   }
 
   // Called once the command ends or is interrupted.
