@@ -31,10 +31,9 @@ public class DriveChassis extends Command {
   @Override
   public void execute() {
     double speed = driveFunction.getAsDouble();
-    chassis.drive(speed);
     double spin = spinFunction.getAsDouble();
-   if (Math.abs(spin) >= 0.1){
-    chassis.spin(spin);
+   if (Math.abs(spin) >= 0.1 || Math.abs(speed) >= 0.1){
+    chassis.drive(speed,spin);
    } 
   }
 

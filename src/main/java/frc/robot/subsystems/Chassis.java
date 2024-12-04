@@ -21,12 +21,23 @@ public class Chassis extends SubsystemBase {
      System.out.println("just created chassis");
   }
 
-  public void drive(double speed) {
+  public void drive(double speed, double spin) {
     speed *= 0.3;
-    leftFront.set(speed);
-    leftRear.set(speed);
-    rightFront.set(speed);
-    rightRear.set(speed);
+    spin*= 0.3;
+    double leftSide;
+    double rightSide;
+    if (spin < 0){
+      leftSide = speed - spin;
+      rightSide = speed + spin;
+    }
+    else{
+      leftSide = speed + spin;
+      rightSide = speed - spin;
+    }
+    leftFront.set(leftSide);
+    leftRear.set(leftSide);
+    rightFront.set(rightSide);
+    rightRear.set(rightSide);
   }
    public void spin(double spin) {
     spin *= 0.3;
