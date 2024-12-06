@@ -12,13 +12,17 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 public class Reindeer extends SubsystemBase {
   private CANSparkMax motor = new CANSparkMax(8, MotorType.kBrushed);
   public Reindeer() {}
-  public void start(){
-    motor. set(.2);
 
+  public void Reindeerstart(){
+    this.motor.set(0.5);
+    System.out.println("Stared");
   }
+
   public void stop (){
     motor.set(0);
+    System.out.println("stopped");
   }
+ 
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
