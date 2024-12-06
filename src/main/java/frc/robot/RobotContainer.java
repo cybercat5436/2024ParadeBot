@@ -57,7 +57,7 @@ public class RobotContainer {
     // cancelling on release.
 
     chassis.setDefaultCommand(new DriveChassis(() -> m_driverController.getLeftY(), () -> -m_driverController.getRightX(), chassis));
-    m_driverController.a().onTrue((new InstantCommand(() -> reindeer.Reindeerstart())));
+    m_driverController.a().onTrue((new InstantCommand(() -> reindeer.start())));
     m_driverController.b().onTrue(new InstantCommand(() -> reindeer.stop()));
   }
 

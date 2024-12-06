@@ -13,9 +13,9 @@ public class Reindeer extends SubsystemBase {
   private CANSparkMax motor = new CANSparkMax(8, MotorType.kBrushed);
   public Reindeer() {}
 
-  public void Reindeerstart(){
-    this.motor.set(0.5);
-    System.out.println("Stared");
+  public void start(){
+    motor.set(0.15);
+    System.out.println("Started");
   }
 
   public void stop (){
